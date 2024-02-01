@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap');
+.news-container {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+max-width: 100%;
+padding: 10px;
+}
+.news-card {
+display: flex;
+flex: 1 1 auto;
+flex-direction: column;
+position: relative;
+margin: 20px;
+height: 400px;
+max-height: auto;
+}
+
+.news-img img {
+width:100%;
+height: 237px;
+object-fit: cover;
+object-position: top center;
+}
+
+.news-info {
+display: flex;
+flex-direction: column;
+padding-left: 8px;
+padding-bottom: 15px;
+padding-right: 8px;
+justify-content: center;
+height: 100%;
+}
+
+.news-desc {
+margin-top: 5px;
+margin-bottom: 10px;
+
+}
+
+.news-meta {
+margin-top: 7px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
+.news-category {
+text-transform: uppercase;
+font-weight: 700;
+color: #aa0000;
+font-size: x-small;
+letter-spacing: 1px;
+}
+
+.news-published {
+text-transform: uppercase;
+color: grey;
+font-size: x-small;
+}
+
+.news-util {
+text-transform: uppercase;
+color: grey;
+font-size: x-small;
+letter-spacing: 0.2px;
+}
+
+
+.news-meta-container {
+ display: block;
+ position: relative;
+ width: 100%;
+ height: 2px;
+}
+
+.news-meta-container::before {
+content: "";
+width: 100%;
+height: 3px;
+margin-top: 0px;
+position: absolute;
+border-bottom: 1px solid #a80929;
+border-top: 1px solid #202938;
+
+
+}
+
+.news-title h3 {
+ font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5vw;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1400px) {
+	.news-container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		padding: 10px;
+		max-width: 100%;
+	}
+	.news-card {
+		height: 380px;
+		
+	}
+	
+	.news-img img {
+		width:100%;
+		height: 237px;
+		object-fit: cover;
+		object-position: top center;
+	}
+	
+	.news-info {
+		padding-bottom: 35px;
+	
+	}
+	.news-title {
+		margin-top: 2px;
+	}
+	.news-title h3 {
+		font-size: 0.9em;
+	}
+	
+	.news-category {
+		margin-top: 2px;
+	}
+	
+	.news-desc h6 {
+		font-size: 0.8em;
+	}
+
+    .card-twitter .news-desc h6 {
+	font: x-small -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif !important;
+	color: white;
+	font-weight: 700 !important;
+	margin-bottom: -5px;
+}
+
+
+}
+
+@media only screen and (max-width: 499px) {
+	.news-container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		padding: 10px;
+	}
+	
+	.news-card {
+		flex-direction: row;
+		margin: 0;
+		min-height: 120px;
+		height: auto;	
+		padding: 5px;
+		border-bottom: 1px #aa0000 solid;
+	}
+	
+	.card-twitter .news-img {
+		display: none;
+	}
+	
+	.news-img {
+		display: flex;
+		flex: 0 0 auto;
+		flex-basis: 40%;
+		flex-direction: column;
+	}
+	
+	.news-img img {
+		width:100%;
+		height: 80px;
+		object-fit: cover;
+		object-position: top center;
+		
+	}
+	
+	.news-info {
+		display: flex;
+		flex: 1 1 auto;
+		flex-basis: 60%;
+		
+	}
+	
+	.news-title h3 {
+		font-size: 0.9em;
+	}
+	
+	.news-desc h6 {
+		font-size: 0.8em;
+	}
+	
+	.news-meta-container {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		margin-bottom: 30px;
+	}
+	
+	.news-meta {
+		margin-top: 10px;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+	
+	.news-meta-container::before {
+		content: "";
+		width: 0;
+	}
+	
+	
+}
+@media only screen and (min-width: 500px) {
+		.news-card:hover {
+			cursor:pointer;
+		
+		
+		.news-info {
+			min-height: 180px;
+			background-color: #202938;
+			transform: translate(0, -20px);
+			transition: all 0.3s cubic-bezier(0.39, 0.15, 0.08, 0.87);
+		}
+	
+		.news-title h3 {
+			color: white;
+		}	
+	
+		.news-desc h6 {
+			color: white;
+		}
+	}
+	
+	.news-card:not(hover) {
+
+		.news-info {
+			min-height: 180px;
+			transform: translate(0, 0px);
+			transition: all 0.3s cubic-bezier(0.39, 0.15, 0.08, 0.87);
+		
+		}
+
+	}
+	
+	.card-twitter .news-info {
+	
+		min-height: 170px !important;
+	}
+
+	.card-twitter:hover .news-info {
+	   
+		z-index: 99999;
+		min-height: 190px !important;
+
+
+	}
+		
+	
+}
+
+
+
+.card-twitter .news-img::before {
+ content: "";
+ background-image: linear-gradient(to bottom, transparent , #aa0000);
+ min-width: 100%;
+ height: 237px;
+ display: block;
+ position: absolute;
+ z-index: 1;
+}
+
+
+.twitter-regular .news-img::before {
+ content: "";
+ background-image: linear-gradient(to bottom, transparent , #FFFFFF) !important;
+ min-width: 100%;
+ height: 237px;
+ display: block;
+ position: absolute;
+ z-index: 1;
+}
+
+.card-twitter .news-img img {
+object-position: 35% 15%;
+}
+
+.card-twitter {
+ background-color: #aa0000 !important;
+}
+
+.card-twitter .card-regular {
+ background-color: #FFFFFF !important;
+}
+
+.card-twitter .news-category {
+font-weight: 700;
+color: white;
+margin-bottom: 10px;
+}
+
+.card-twitter .news-util {
+color: white;
+}
+
+.card-twitter .news-published {
+color: white;
+}
+
+.card-twitter .news-desc h6 {
+font: small -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+.card-twitter .news-title h3 {
+font: medium -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+font-weight: 700;
+}
+
+.card-twitter .news-title {
+display: flex;
+flex-direction: row;
+gap: 8px;
+color: white;
+}
+
+.card-twitter .news-title svg {
+
+vertical-align: middle;
+color: rgba(29,155,240);
+}
+
+.card-twitter .news-title .news-author {
+width: 20px;
+height: 20px;
+border-radius: 50px;
+margin-right: 20px;
+color: white;
+}
+
+.card-twitter .news-title .news-author img {
+width: 40px;
+height: 40px;
+border-radius: 50px;
+
+}
+
+.card-twitter .news-desc {
+margin-left: 45px;
+margin-top: -10px;
+margin-bottom: 10px !important;
+color: white;
+}
+
+.breaking {
+background-color: gold;
+color: black;
+padding: 2px;
+}
+
+.twitter-regular .news-info {
+background-color: white;
+
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<section class="news-container">
+		
+	<article class="news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1r0ULuUQk0nfdGlm64rAQIDgrd01N8uYGiS0OZeDcfddno-5QMGFBxfmcwQlYMeQE153z4axtw9fZY6igw-KD6rSHnhmUfd2awXtGTc8KrguYVh8ef_Q-P7m4luchVxxifRbW8pYAgWqtpdprpUV4SfBWLXYv40eHb7rt-9EWyBBYIXHAqhg4cg_ngzS_/s1000/arsenal-24-25-champions-league-training-kit%20%285%29.jpg">
+		</div>
+		<div class="news-info">
+			<div class="news-category">Pletykák</div>
+			<div class="news-title"><h3>Ilyen lehet jövőre a bemelgítő mezünk</h3></div>
+			<div class="news-desc"><h6>A BL meccsek előtt használnánk ezt a bemelegítő mezünket</h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> még nincs hozzászólás | <i class="fa-solid fa-book-open-reader"></i> '3 </div>
+					<div class="news-published">5 perce</div>
+				</div>
+			 </div>
+		</div>
+	</article>
+
+	<article class="news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://www.arsenal.com/sites/default/files/styles/large_16x9/public/images/Runarsson-leaves.png?auto=webp&itok=2_VEe9Tr">
+		</div>
+		<div class="news-info">
+			<div class="news-category">Hivatalos</div>
+			<div class="news-title"><h3>Alex Runarsson távozott</h3></div>
+			<div class="news-desc"><h6>A csapat kapusa szerződésbontással távozott, a Koppenhága játékosa lesz</h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> még nincs hozzászólás | <i class="fa-solid fa-book-open-reader"></i> '3 </div>
+					<div class="news-published">5 perce</div>
+				</div>
+			 </div>
+		</div>
+	</article>
+
+	<article class="card-twitter news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://www.arsenal.com/sites/default/files/styles/large_16x9/public/images/azeez_1.jpg?auto=webp&itok=ZO7yA1xX">
+		</div>
+		<div class="news-info">
+			
+			<div class="news-category">Breaking | Rövidhír</div>
+			<div class="news-title">
+				<div class="news-author"><img src="https://pbs.twimg.com/profile_images/1178558529105530880/Qvy-hv3O_400x400.jpg"></div>
+				<h3>David Ornstein</h3>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-patch-check-fill" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/></svg>
+			</div>
+			<div class="news-desc"><h6>🚨 Miguel Azeez elhagyja az Arsenalt és az Atletico Baleares játékosa lesz. A 21 éves hazai nevelésű játékos szerződése a nyáron lejárt volna. Így a spanyol harmadosztályban folytatja. </h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 108 hozzászólás | <i class="fa-solid fa-book-open-reader"></i> '5 </div>
+					<div class="news-published">8 napja</div>
+				</div>
+			 </div>
+		</div>
+	</article>
+
+
+	<article class="card-twitter news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://pbs.twimg.com/media/GFQX0g_WkAAop5I?format=jpg&name=medium">
+		</div>
+		<div class="news-info">
+			
+			<div class="news-category">Breaking | Rövidhír</div>
+			<div class="news-title">
+				<div class="news-author"><img src="https://pbs.twimg.com/profile_images/1741753635158024192/j0m8Ucvv_400x400.jpg"></div>
+				<h3>Fabrizio Romano</h3>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-patch-check-fill" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/></svg>
+			</div>
+			<div class="news-desc"><h6>🚨🔴⚪️ Az Arsenal azonnali hatállyal felbontja Alex Runarsson szerződését. Az izlandi kapus a Koppenhágához igazol, a szerződés majdnem teljes. </h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 108 hozzászólás | <i class="fa-solid fa-book-open-reader"></i> '5 </div>
+					<div class="news-published">8 napja</div>
+				</div>
+			 </div>
+		</div>
+	</article>
+
+	<article class="card-twitter news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://pbs.twimg.com/card_img/1752455088919195648/qH68NO6Y?format=jpg&name=small">
+		</div>
+		<div class="news-info">
+			
+			<div class="news-category"><span class="breaking">Breaking</span> | Rövidhír</div>
+			<div class="news-title">
+				<div class="news-author"><img src="https://pbs.twimg.com/profile_images/1178558529105530880/Qvy-hv3O_400x400.jpg"></div>
+				<h3>David Ornstein</h3>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-patch-check-fill" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/></svg>
+			</div>
+			<div class="news-desc"><h6>🚨 EXKLUZÍV: Az Arsenal ma este massziv ajánlatot tett a West Hamnek Declan Rice-ért. Az ajánlat: 100m + 5m bónuszokként - ez rekordigazolás lenne egy angol játékosért. </h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 108 hozzászólás | <i class="fa-solid fa-book-open-reader"></i> '5 </div>
+					<div class="news-published">8 napja</div>
+				</div>
+			 </div>
+		</div>
+	</article>
+	
+	
+	<article class="news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://www.arsenal.com/sites/default/files/styles/large_16x9/public/images/Bradley-Ibrahim.png?auto=webp&itok=P2tUVHxM">
+		</div>
+		<div class="news-info">
+			<div class="news-category">Átigazolás</div>
+			<div class="news-title"><h3>Bradley Ibrahim eligazolt</h3></div>
+			<div class="news-desc"><h6>A fiatal játékos Dárdai Pál csapatánál folytatja</h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> még nincs hozzászólás | <i class="fa-solid fa-book-open-reader"></i> '3 </div>
+					<div class="news-published">5 perce</div>
+				</div>
+			 </div>
+		</div>
+	</article>
+	
+	<article class="news-card shadow-sm">
+		<div class="news-img">
+			<img src="http://arsenalfan.hu/media/news/7e7e1c27cc62739cdc12d533edda1718.jpg">
+		</div>
+		<div class="news-info">
+			<div class="news-category">Pletykák</div>
+			<div class="news-title"><h3>Onana leigazolását fontolgatja a csapat</h3></div>
+			<div class="news-desc"><h6>A belga középpályás megszerzése viszont nehéz lesz</h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 59 | <i class="fa-solid fa-book-open-reader"></i> '13 </div>
+					<div class="news-published">2023.12.31.</div>
+				</div>
+			 </div>
+		</div>
+	
+	</article>
+	
+	<article class="news-card shadow-sm">
+		<div class="news-img">
+			<img src="http://arsenalfan.hu/media/news/a773b23ba54994743df339f2f34dd67d.jpg">
+		</div>
+		<div class="news-info">
+			<div class="news-category">Hivatalos</div>
+			<div class="news-title"><h3>Declan Rice az Arsenal játékosa!</h3></div>
+			<div class="news-desc"><h6>Az Arsenal szombat kora délután hivatalosan is megerősítette Declan Rice érkezését a West Hamtől. </h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 2000 | <i class="fa-solid fa-book-open-reader"></i> '23 </div>
+					<div class="news-published">2023.07.31.</div>
+				</div>
+			 </div>
+		</div>
+	
+	</article>
+	
+		<article class="card-twitter news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://e0.365dm.com/23/07/1600x900/skysports-david-raya-brentford_6232924.jpg?20230728130027">
+		</div>
+		<div class="news-info">
+			
+			<div class="news-category">Breaking | Rövidhír</div>
+			<div class="news-title">
+				<div class="news-author"><img src="https://pbs.twimg.com/profile_images/1741753635158024192/j0m8Ucvv_400x400.jpg"></div>
+				<h3>Fabrizio Romano</h3>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-patch-check-fill" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/></svg>
+			</div>
+			<div class="news-desc"><h6>🚨 BREAKING:Az Arsenal megállapodott David Raya szerződtetéséről. Here We Go! 🚨🔴⚪️ #AFC </h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 108 hozzászólás | <i class="fa-solid fa-book-open-reader"></i> '5 </div>
+					<div class="news-published">8 napja</div>
+				</div>
+			 </div>
+		</div>
+	</article>
+	
+	<article class="news-card shadow-sm">
+		<div class="news-img">
+			<img src="http://arsenalfan.hu/media/news/a773b23ba54994743df339f2f34dd67d.jpg">
+		</div>
+		<div class="news-info">
+			<div class="news-category">Hivatalos</div>
+			<div class="news-title"><h3> Gabriel Jesus érkezett</h3></div>
+			<div class="news-desc"><h6>Az Arsenal hétfő reggel hivatalosan is bejelentette Gabriel Jesus érkezését a Manchester City-től.</h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 50 | <i class="fa-solid fa-book-open-reader"></i> '10 </div>
+					<div class="news-published">2022.07.31.</div>
+				</div>
+			 </div>
+		</div>
+	
+	</article>
+	
+		<article class="news-card shadow-sm">
+		<div class="news-img">
+			<img src="https://e0.365dm.com/24/02/1600x900/skysports-lewis-hamilton-ferrari_6440225.jpg?20240201105031">
+		</div>
+		<div class="news-info">
+			<div class="news-category">Breaking </div>
+			<div class="news-title"><h3>Lewis Hamilton to leave Mercedes and join Ferrari for 2025 Formula 1 season</h3></div>
+			<div class="news-desc"><h6>Lewis Hamilton will join Ferrari next year and replace Carlos Sainz in a shock move</h6></div>
+			
+			  <div class="news-meta-container">
+				<div class="news-meta">
+					
+					<div class="news-util"><i class="fa-solid fa-comment"></i> 50 | <i class="fa-solid fa-book-open-reader"></i> '10 </div>
+					<div class="news-published">2022.07.31.</div>
+				</div>
+			 </div>
+		</div>
+	
+	</article>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
